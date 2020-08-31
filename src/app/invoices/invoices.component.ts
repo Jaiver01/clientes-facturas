@@ -11,6 +11,7 @@ export class InvoicesComponent implements OnInit {
   client = 'all';
   clients: any = [];
   clientName = '';
+  newClient: any = {name: '', nit: '', city: '', phone: '', email: ''};
   invoice: any = {code: '', total: 0, withholdingTax: 0, client: ''};
   invoices: any = [];
 
@@ -46,6 +47,21 @@ export class InvoicesComponent implements OnInit {
       if (res.done) {
         this.invoice = {code: '', total: 0, withholdingTax: 0, client: ''};
         document.getElementById('close-modal').click();
+      }
+    });
+  }
+
+  setClient() {
+    if (!this.newClient.name || !this.newClient.nit || !this.newClient.email) {
+      alert('Los campos Nombre, NIT y Correo, son obligatorios');
+      return;
+    }
+
+    this.ivs.setClient(this.newClient).subscribe((res: any) => {
+      if (res.done) {
+        this.newClient = {name: '', nit: '', city: '', phone: '', email: ''};
+        this.ivs.getClients().subscribe(clients => this.clients = clients);
+        document.getElementById('close-modal-client').click();
       }
     });
   }

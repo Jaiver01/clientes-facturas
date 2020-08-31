@@ -14,6 +14,10 @@ export class InvoicesService {
         return this.http.get(this.URL + '/clients');
     }
 
+    setClient(client) {
+        return this.http.post(this.URL + '/client', client);
+    }
+
     setInvoice(invoice) {
         return this.http.post(this.URL + '/invoice', invoice);
     }

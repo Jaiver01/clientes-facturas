@@ -1,6 +1,7 @@
 <div class="jumbotron">
     <div class="container">
         <form>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#modal-form-client">Agregar Cliente</button>
             <div class="form-group">
                 <label for="client">Cliente:</label>
                 <select [(ngModel)]="client" name="client" class="form-control">
@@ -75,6 +76,47 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary" (click)="setInvoice()">Guardar factura</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-form-client" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Nuevo Cliente</h5>
+                <button type="button" id="close-modal-client" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="name" class="col-form-label">Nombre:</label>
+                        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="newClient.name">
+                    </div>
+                    <div class="form-group">
+                        <label for="nit" class="col-form-label">NIT:</label>
+                        <input type="text" class="form-control" id="nit" name="nit" [(ngModel)]="newClient.nit" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="city" class="col-form-label">Ciudad:</label>
+                        <input type="text" class="form-control" id="city" name="city" [(ngModel)]="newClient.city" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="col-form-label">Teléfono:</label>
+                        <input type="phone" class="form-control" id="phone" name="phone" [(ngModel)]="newClient.phone" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-form-label">Correo Electrónico:</label>
+                        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="newClient.email" value="0">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" (click)="setClient()">Guardar Cliente</button>
             </div>
         </div>
     </div>
